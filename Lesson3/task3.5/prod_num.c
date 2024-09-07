@@ -1,7 +1,7 @@
 /*
- * average.c
+ * prod_num.c
  * 
- * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
+ * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,11 +26,24 @@
 
 int main(int argc, char **argv)
 {
-    int x1, x2, x3;
-    double Average;
-    scanf("%d %d %d", &x1, &x2, &x3);
-    Average =(double)(x1 + x2 + x3)/3;
-    printf("%.2f\n", Average);	
+	int num, x1, x10, x100;			
+	scanf("%d", &num);
+	
+	if ( (num/1000) != 0){		//Условие, что число трехзначное
+	    printf("foulse number");
+	    return 0;
+    }
+    
+    x1 = num%10;				//Единицы
+    x10 = (num%100)/10;			//Десятки
+    x100 = num/100; 			//Сотни
+    
+//    printf("%d\n", x1);
+//    printf("%d\n", x10);
+//    printf("%d\n", x100);
+    
+    printf("%d\n", x1 * x10 * x100);
+    	
 	return 0;
 }
 
