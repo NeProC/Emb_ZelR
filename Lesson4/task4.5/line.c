@@ -1,7 +1,7 @@
 /*
- * largest3.c
+ * line.c
  * 
- * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
+ * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,19 +26,17 @@
 
 int main(int argc, char **argv)
 {
-	int x, y, z;
-	scanf("%d %d %d", &x, &y, &z);
+	int x1, x2, y1, y2;
+	float k, b;
+	scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
 	
-	x = x < y ? y : x;
-	x = x < z ? z : x;
+	k =( ((float)y2-y1)/(x2-x1) );
 	
-//	if(x<y)
-//	    x = y;
-	    
-//	if(x<z)
-//	    x = z;
-	    
-	printf("%d\n", x);        
+	b = y1 - k * x1;
+	
+	printf("%.2f\t", k);
+	printf("%.2f\n", b);
+	
 	return 0;
 }
 

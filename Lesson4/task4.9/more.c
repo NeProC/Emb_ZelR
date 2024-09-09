@@ -1,7 +1,7 @@
 /*
- * largest3.c
+ * more.c
  * 
- * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
+ * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,19 +26,14 @@
 
 int main(int argc, char **argv)
 {
-	int x, y, z;
-	scanf("%d %d %d", &x, &y, &z);
+	int a, b, c;
+	scanf("%d %d %d", &a, &b, &c);
 	
-	x = x < y ? y : x;
-	x = x < z ? z : x;
-	
-//	if(x<y)
-//	    x = y;
+	if( a < b && b < c)
+	    printf("YES");
+	else
+	    printf("NO");
 	    
-//	if(x<z)
-//	    x = z;
-	    
-	printf("%d\n", x);        
 	return 0;
 }
 

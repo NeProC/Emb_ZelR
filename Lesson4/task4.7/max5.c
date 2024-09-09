@@ -1,7 +1,7 @@
 /*
- * largest3.c
+ * max5.c
  * 
- * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
+ * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,19 +26,15 @@
 
 int main(int argc, char **argv)
 {
-	int x, y, z;
-	scanf("%d %d %d", &x, &y, &z);
+	int a, b, c, d, e;
+	scanf("%d %d %d %d %d", &a, &b, &c, &d, &e);
 	
-	x = x < y ? y : x;
-	x = x < z ? z : x;
+	a = a > b ? a : b;
+	a = a > c ? a : c;
+	a = a > d ? a : d;
+	a = a > e ? a : e;
 	
-//	if(x<y)
-//	    x = y;
-	    
-//	if(x<z)
-//	    x = z;
-	    
-	printf("%d\n", x);        
+	printf("%d\n", a);
 	return 0;
 }
 

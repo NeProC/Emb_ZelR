@@ -1,7 +1,7 @@
 /*
- * largest3.c
+ * sum_mux_and_min.c
  * 
- * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
+ * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,19 +26,20 @@
 
 int main(int argc, char **argv)
 {
-	int x, y, z;
-	scanf("%d %d %d", &x, &y, &z);
+	int a, b, c, d, e, max, min;
+	scanf("%d %d %d %d %d", &a, &b, &c, &d, &e);
 	
-	x = x < y ? y : x;
-	x = x < z ? z : x;
-	
-//	if(x<y)
-//	    x = y;
-	    
-//	if(x<z)
-//	    x = z;
-	    
-	printf("%d\n", x);        
+	max = a > b ? a : b;
+	max = max > c ? max : c;
+    max = max > d ? max : d;
+    max = max > e ? max : e;
+    
+    min = a < b ? a : b;
+    min = min < c ? min : c;
+    min = min < d ? min : d;
+    min = min < e ? min : e;
+    
+    printf("%d\n", max + min);
 	return 0;
 }
 

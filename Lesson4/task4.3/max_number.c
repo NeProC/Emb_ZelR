@@ -1,7 +1,7 @@
 /*
- * largest3.c
+ * max_number.c
  * 
- * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
+ * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -26,19 +26,29 @@
 
 int main(int argc, char **argv)
 {
-	int x, y, z;
-	scanf("%d %d %d", &x, &y, &z);
+	int num, t1, t10, t100;
+	scanf("%d", &num);
 	
-	x = x < y ? y : x;
-	x = x < z ? z : x;
+	if(num/1000 != 0){
+	    printf("foulse_number");
+		return 0;
+	}
 	
-//	if(x<y)
-//	    x = y;
-	    
-//	if(x<z)
-//	    x = z;
-	    
-	printf("%d\n", x);        
+	t100 = num/100;
+	t10 = (num%100)/10;
+	t1 = num%10;
+	
+	num = t1;
+	num = num > t10 ? num : t10;
+	num = num > t100 ? num : t100;
+	
+//	if(num<t10)
+//	    num = t10;
+//	if(num<t100)
+//	    num = t100;
+	
+	printf("%d\n", num);    
+	        
 	return 0;
 }
 
