@@ -1,5 +1,5 @@
 /*
- * season.c
+ * triangle.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -26,24 +26,18 @@
 
 int main(int argc, char **argv)
 {
-	int season;
-	scanf("%d", &season);
+	int a, b, c;
+	scanf("%d %d %d", &a, &b, &c);
 	
-	switch(season){
-		case  1: 
-		case  2: printf("winter"); break;
-		case  3: 
-		case  4: 
-		case  5: printf("spring"); break;
-		case  6: 
-		case  7: 
-		case  8: printf("summer"); break;
-		case  9: 
-		case 10: 
-		case 11: printf("autumn"); break;
-		case 12: printf("winter"); break;
-		default: printf("Error_number");
+	if (a + b > c && a + c > b && b + c > a)
+	{
+		printf("YES");
 	}
+	else
+	{
+		printf("NO");
+	}
+	
 	return 0;
 }
 
