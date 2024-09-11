@@ -1,7 +1,7 @@
 /*
- * prod_num.c
+ * while.c
  * 
- * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
+ * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -24,27 +24,26 @@
 
 #include <stdio.h>
 
-int prodNum(int num)		//Рекурсивная функция умножения цифр числа
+int fuck(unsigned int n)
 {
-    if(num > 0)
-        return num % 10 * prodNum( num / 10 );
-    else
-        return 1;    
+//    printf("%d\n", n);
+    
+    if(n <= 1){
+        return 1;
+    }
+    
+    unsigned int fu = n * fuck(n-1);
+    return fu;	
 }
 
 int main(int argc, char **argv)
 {
-	int num; 		
-	scanf("%d", &num);
+	unsigned int in, out;
+	scanf("%d", &in);
 	
-	if ( (num/1000) != 0){		//Условие, что число трехзначное
-	    printf("foulse number");
-	    return 0;
-    }
-   
-    num = prodNum(num);
-    printf("%d\n", num);
-    	
+	out = fuck(in);
+	printf("\t%d\n", out );
+	
 	return 0;
 }
 
