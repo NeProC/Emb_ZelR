@@ -24,13 +24,18 @@
 
 #include <stdio.h>
 
+float aver3(int a, int b, int c)
+{
+    return (float)(a + b + c)/3;	
+}
+
 int main(int argc, char **argv)
 {
     int x1, x2, x3;
-    double Average;
     scanf("%d %d %d", &x1, &x2, &x3);
-    Average =(double)(x1 + x2 + x3)/3;
-    printf("%.2f\n", Average);	
+    
+    printf("%.2f\n", aver3(x1,x2,x3));	
+	
 	return 0;
 }
 

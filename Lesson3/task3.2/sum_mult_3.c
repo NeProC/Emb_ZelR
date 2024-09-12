@@ -24,11 +24,23 @@
 
 #include <stdio.h>
 
+int sum3(int a, int b, int c)
+{
+	return a + b + c;	
+}	
+
+int comp3(int a, int b, int c)
+{
+    return a * b * c;
+}	
+
 int main(int argc, char **argv)
 {
 	int x1, x2, x3;
 	scanf("%d %d %d", &x1, &x2, &x3);
-	printf("%d+%d+%d=%d\n", x1, x2, x3, x1+x2+x3);
-	printf("\t\t%d*%d*%d=%d\n", x1, x2, x3, x1*x2*x3);
+    
+    printf("%d\n", sum3(x1,x2,x3));
+    printf("\t%d\n", comp3(x1,x2,x3));
+	
 	return 0;
 }
