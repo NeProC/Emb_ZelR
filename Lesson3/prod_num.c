@@ -26,7 +26,7 @@
 
 int prodNum(int num)		//Рекурсивная функция умножения цифр числа
 {
-    if(num > 0)
+    if(num != 0)
         return num % 10 * prodNum( num / 10 );
     else
         return 1;    
@@ -42,8 +42,7 @@ int main(int argc, char **argv)
 	    return 0;
     }
    
-    num = prodNum(num);
-    printf("%d\n", num);
+    printf("%d\n", prodNum(num));
     	
 	return 0;
 }

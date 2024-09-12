@@ -1,5 +1,5 @@
 /*
- * sum_mult_3.c
+ * sumOfNumber.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -24,23 +24,21 @@
 
 #include <stdio.h>
 
-int sum3(int a, int b, int c)
+int sumNumber(int i)
 {
-	return a + b + c;	
-}	
-
-int comp3(int a, int b, int c)
-{
-    return a * b * c;
+	if(i == 0)
+	    return 0;
+	else
+	    return (i % 10) + sumNumber(i / 10);    
 }	
 
 int main(int argc, char **argv)
 {
-	int x1, x2, x3;
-	scanf("%d %d %d", &x1, &x2, &x3);
-    
-    printf("%d\n", sum3(x1,x2,x3));
-    printf("\t%d\n", comp3(x1,x2,x3));
+	int num;
+	scanf("%d", &num);
+	
+	printf("%d\n", sumNumber(num));
 	
 	return 0;
 }
+

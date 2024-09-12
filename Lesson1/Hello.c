@@ -1,5 +1,5 @@
 /*
- * average.c
+ * Hello.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -24,18 +24,9 @@
 
 #include <stdio.h>
 
-float aver3(int a, int b, int c)
+int main()
 {
-    return (float)(a + b + c)/3;	
-}
-
-int main(int argc, char **argv)
-{
-    int x1, x2, x3;
-    scanf("%d %d %d", &x1, &x2, &x3);
-    
-    printf("%.2f\n", aver3(x1,x2,x3));	
-	
+	printf("Hello world!\n");
 	return 0;
 }
 
