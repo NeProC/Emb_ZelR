@@ -24,10 +24,21 @@
 #define begin 10
 #include <stdio.h>
 
+
+
 int main(int argc, char **argv)
 {
-	int num;
+	int num, score_num = 0, tmp;
 	scanf("%d", &num);
+	tmp = num;
+	
+	while(tmp != 0){
+		score_num++;
+		tmp /= 10;
+	}
+	
+	
+	
 	return 0;
 }
 
