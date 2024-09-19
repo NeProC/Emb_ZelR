@@ -23,30 +23,26 @@
 
 
 #include <stdio.h>
+#include <stdint.h>
 
 int main(int argc, char **argv)
 {
-	int num, temp1, temp2, scoreNumber = 0, flag = 0;
-	scanf("%d", &num);
-	temp = num;
+	int32_t n, num, next_num;
+	scanf("%d", &n);
 	
-	while(temp1 != 0){
-	    scoreNumber++;
-		temp1 /= 10;
-    }
-    
-    while(num != 0){
-	    temp1 = num%10;
-	    temp2 = num/10;
-	    
-	    for (int i = 0; i < scoreNumber-1; i++)
-		{
-	        if(temp1 == temp2%(10*i))
-		}
-	    
-	    num /=10;
-	    scoreNumber--;
-	}   		
+	while(n != 0){
+		num = n%10;
+		next_num = n/10;
+		while(next_num != 0){
+			if(num == next_num%10){
+				printf("YES");
+				return 0;
+			}
+			next_num /= 10;
+		} 
+		n /=10;
+	}
+	printf("NO");
 	return 0;
 }
 

@@ -1,5 +1,5 @@
 /*
- * B5.c
+ * B18.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -23,19 +23,22 @@
 
 
 #include <stdio.h>
+#include <stdint.h>
 
 int main(int argc, char **argv)
 {
-	int num, sum = 0;
-	scanf("%d", &num);
+	uint32_t n, num = 0,next_num = 1, fib = 0;
+	scanf("%d", &n);
+	printf("%d ", next_num);
 	
-	while(num != 0)
+	for (int i = 0; i < n-1; i++)
 	{
-		sum += num%10;
-		num /= 10;
-    }	
-    
-    printf("%d\n", sum);
+		fib = num + next_num;
+		num = next_num;
+		next_num = fib;
+		printf("%d ", fib);
+	}
+	
 	return 0;
 }
 

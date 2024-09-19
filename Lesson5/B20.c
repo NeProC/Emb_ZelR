@@ -1,5 +1,5 @@
 /*
- * B5.c
+ * B20.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -23,19 +23,25 @@
 
 
 #include <stdio.h>
+#include <stdint.h>
 
 int main(int argc, char **argv)
 {
-	int num, sum = 0;
+	uint32_t num, flag = 0;
 	scanf("%d", &num);
 	
-	while(num != 0)
+	for (uint32_t i = 1; i <= num; i++)
 	{
-		sum += num%10;
-		num /= 10;
-    }	
-    
-    printf("%d\n", sum);
+		if(num%i == 0){
+			flag++;
+		}
+	}
+	if(flag == 2){
+		printf("YES");
+	}
+	else{
+		printf("NO");
+	}
 	return 0;
 }
 

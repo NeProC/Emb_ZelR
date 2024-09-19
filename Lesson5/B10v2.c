@@ -1,5 +1,5 @@
 /*
- * B5.c
+ * B10.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -26,16 +26,18 @@
 
 int main(int argc, char **argv)
 {
-	int num, sum = 0;
+	int num, flag = 0;
 	scanf("%d", &num);
 	
-	while(num != 0)
-	{
-		sum += num%10;
+	while(num != 0){
+		if(num%10 <= (num%100)/10){
+		    flag++;
+		    break;	
+		}
 		num /= 10;
-    }	
-    
-    printf("%d\n", sum);
+	}
+	printf("%s", flag ? "NO" : "YES");    
+	
 	return 0;
 }
 

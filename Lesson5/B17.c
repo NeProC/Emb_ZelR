@@ -24,20 +24,37 @@
 #define begin 10
 #include <stdio.h>
 
+int score_sum(int num)				//Ф-ци суммы цифр числа
+{
+	int sum = 0;
+	while(num != 0){
+		sum += num%10;
+		num /= 10;
+	}
+	return sum;						//Возвращает сумму
+}
 
+int score_um(int num)				//Ф-ция умножения цифр числа
+{
+	int um = 1;
+	while(num != 0){
+		um *= num%10;
+		num /= 10;
+	}
+	return um;						//Возвращает произведение
+}
 
 int main(int argc, char **argv)
 {
-	int num, score_num = 0, tmp;
+	int num;
 	scanf("%d", &num);
-	tmp = num;
 	
-	while(tmp != 0){
-		score_num++;
-		tmp /= 10;
+	for (int i = begin; i <= num; i++)
+	{
+		if(score_sum(i) == score_um(i)){	//Условие равенства суммы и произведения
+			printf("%d ", i);
+		}
 	}
-	
-	
 	
 	return 0;
 }

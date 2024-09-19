@@ -1,7 +1,7 @@
 /*
- * B5.c
+ * B16.c
  * 
- * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
+ * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,19 +23,17 @@
 
 
 #include <stdio.h>
+#include <stdint.h>
 
 int main(int argc, char **argv)
 {
-	int num, sum = 0;
-	scanf("%d", &num);
+	int32_t x, y;
+	scanf("%d %d", &x, &y);
 	
-	while(num != 0)
-	{
-		sum += num%10;
-		num /= 10;
-    }	
-    
-    printf("%d\n", sum);
+	while(x != 0 && y != 0){
+		x > y ? (x %= y) : (y %= x);
+	}
+	printf("%d\n", x == 0 ? y : x);
 	return 0;
 }
 

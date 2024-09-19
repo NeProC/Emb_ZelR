@@ -1,5 +1,5 @@
 /*
- * B5.c
+ * B21.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -23,19 +23,22 @@
 
 
 #include <stdio.h>
+#include <stdint.h>
 
 int main(int argc, char **argv)
 {
-	int num, sum = 0;
-	scanf("%d", &num);
-	
-	while(num != 0)
-	{
-		sum += num%10;
-		num /= 10;
-    }	
-    
-    printf("%d\n", sum);
+	uint8_t c = ' ';
+	while(c != '.'){
+		scanf("%c", &c);
+		if (c >='A' && c <='Z')
+		{
+			c += 0x20;
+		}
+		if (c != '.')
+		{
+			printf("%c", c);
+		}
+	}
 	return 0;
 }
 

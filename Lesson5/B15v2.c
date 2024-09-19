@@ -1,7 +1,7 @@
 /*
- * B5.c
+ * B14.c
  * 
- * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
+ * Copyright 2024 roman <roman@DESKTOP-RM33TSB>
  * 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -25,17 +25,19 @@
 #include <stdio.h>
 
 int main(int argc, char **argv)
-{
-	int num, sum = 0;
-	scanf("%d", &num);
+{	
+	unsigned int num, score_even = 0;
 	
-	while(num != 0)
+	do
 	{
-		sum += num%10;
-		num /= 10;
-    }	
-    
-    printf("%d\n", sum);
+		scanf("%d", &num);
+		if(num%2 == 0){
+			score_even++;
+		}
+	} while (num != 0);
+	
+	
+	printf("%d\n", score_even-1);
 	return 0;
 }
 

@@ -1,5 +1,5 @@
 /*
- * B5.c
+ * B19.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -23,19 +23,26 @@
 
 
 #include <stdio.h>
+#include <stdint.h>
+#define need_sum 10
 
 int main(int argc, char **argv)
 {
-	int num, sum = 0;
+	uint32_t num, sum = 0;
 	scanf("%d", &num);
 	
 	while(num != 0)
 	{
 		sum += num%10;
 		num /= 10;
-    }	
-    
-    printf("%d\n", sum);
+	}
+	
+	if (sum == need_sum){
+		printf("YES");
+	}
+	else{
+		printf("NO");
+	}
 	return 0;
 }
 
