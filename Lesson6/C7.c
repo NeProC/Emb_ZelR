@@ -26,21 +26,36 @@
 #include <stdint.h>
 #include <math.h>
 
-uint64_t seed(int32_t n)
+int32_t power(int32_t n, int32_t p)
 {
-	uint64_t tmp = 1;
-	for (int i = 0; i < n-1; i++)
-	{
-		tmp *= 2;
+	if(p == 0) return 1;
+	uint32_t tmp = n;
+	
+	for (int i = 1; i < p; i++){
+		tmp *= n;
 	}
+	
 	return tmp;
+}
+
+uint32_t calculus( uint32_t N, uint32_t P)
+{
+	uint32_t new_num = 0, i = 0;
+	
+	while (N != 0){
+		new_num += (N % P) * power(10,i);
+		i++;
+		N /= P;
+	}
+	
+	return new_num;
 }
 
 int main(int argc, char **argv)
 {
-	uint32_t x;
-	scanf("%d", &x);
-	printf("%llu\n", seed(x));
+	int32_t N, P;
+	scanf("%d %d", &N, &P);
+	printf("%d\n", calculus(N,P));
 	return 0;
 }
 

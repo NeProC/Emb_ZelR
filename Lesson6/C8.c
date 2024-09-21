@@ -26,21 +26,23 @@
 #include <stdint.h>
 #include <math.h>
 
-uint64_t seed(int32_t n)
+void From_a_to_A(uint8_t i)
 {
-	uint64_t tmp = 1;
-	for (int i = 0; i < n-1; i++)
-	{
-		tmp *= 2;
+	if(i >= 'a' && i <= 'z'){
+		i -= 0x20;
 	}
-	return tmp;
+	if(i != '.'){
+		printf("%c", i);
+	}
 }
 
 int main(int argc, char **argv)
 {
-	uint32_t x;
-	scanf("%d", &x);
-	printf("%llu\n", seed(x));
+	uint8_t c = ' ';
+	while(c != '.'){
+		scanf("%c", &c);
+		From_a_to_A(c);
+	}
 	return 0;
 }
 

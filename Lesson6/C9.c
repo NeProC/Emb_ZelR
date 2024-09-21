@@ -26,21 +26,21 @@
 #include <stdint.h>
 #include <math.h>
 
-uint64_t seed(int32_t n)
+uint64_t Fuct(uint32_t n)
 {
-	uint64_t tmp = 1;
-	for (int i = 0; i < n-1; i++)
+	uint64_t Fuct_n = 1;
+	for (int i = 1; i <= n; i++)
 	{
-		tmp *= 2;
+		Fuct_n *= i;
 	}
-	return tmp;
+	return Fuct_n;
 }
 
 int main(int argc, char **argv)
 {
-	uint32_t x;
-	scanf("%d", &x);
-	printf("%llu\n", seed(x));
+	uint32_t num;
+	scanf("%d", &num);
+	printf("%lld\n", Fuct(num));
 	return 0;
 }
 
