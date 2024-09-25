@@ -1,5 +1,5 @@
 /*
- * C2.c
+ * C12.c
  * 
  * Copyright 2024 R.Zelenev <R.Zelenev@NB-592>
  * 
@@ -21,27 +21,63 @@
  * 
  */
 
-
+#define M_PI 3.14159265358979323846
 #include <stdio.h>
 #include <stdint.h>
 #include <math.h>
+#include <inttypes.h>
 
-uint64_t seed(int32_t n)
+
+uint64_t fuct(uint32_t n)										//Ф-ция вычисления факториала
 {
-	uint64_t tmp = 1;
-	for (int i = 0; i < n-1; i++)
-	{
-		//tmp *= 2;
-		tmp = tmp << 1;
+	uint64_t fuct_n = 1;
+	if(n == 0){													// 0! = 1
+		return fuct_n;
 	}
+	
+	for (int i = 1; i <= n; i++){
+		fuct_n *= i;
+	}
+	
+	return fuct_n;
+}
+
+uint64_t power(int32_t n, int32_t p)								//Ф-ция возведения в степень
+{
+	if(p == 0){
+		 return 1;
+	 }
+	uint64_t tmp = n;
+	
+	for (int i = 1; i < p; i++)
+	{
+		tmp *= n;
+	}
+	
 	return tmp;
 }
 
+void sinus(float_t x)										//Ф-ция вычисления синусв через ряды
+{
+	float_t y = 0.0;
+	uint32_t n = 1;
+	while(n <= 10){
+		y += pow(-1, n-1) * pow(x, (2*n-1)) / fuct(2*n-1);
+		n++;
+	}
+	
+	printf("%.3f\n", y);
+}
+
+
 int main(int argc, char **argv)
 {
-	uint32_t x;
-	scanf("%d", &x);
-	printf("%llu\n", seed(x));
+	float x;
+	scanf("%f", &x);
+	
+	x = (M_PI / 180) * x;										//Перевод градусов в радианы
+	
+	sinus(x);
 	return 0;
 }
 

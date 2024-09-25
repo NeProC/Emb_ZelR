@@ -21,27 +21,24 @@
  * 
  */
 
-
+#define M_PI 3.14159265358979323846
 #include <stdio.h>
 #include <stdint.h>
 #include <math.h>
+#include <inttypes.h>
 
-uint64_t seed(int32_t n)
+void swap(int32_t x)
 {
-	uint64_t tmp = 1;
-	for (int i = 0; i < n-1; i++)
-	{
-		//tmp *= 2;
-		tmp = tmp << 1;
-	}
-	return tmp;
+	if(x < 100) swap(x+1);
+	printf("%d\n", x);
 }
 
 int main(int argc, char **argv)
 {
-	uint32_t x;
+	int32_t x;
 	scanf("%d", &x);
-	printf("%llu\n", seed(x));
+	swap(x);
+
 	return 0;
 }
 
