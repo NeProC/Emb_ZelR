@@ -27,26 +27,15 @@
 #include <math.h>
 #include <inttypes.h>
 
-int32_t sum_number(int32_t x)
-{
-	if(x == 0)
-		return 0;
+int32_t is_digit(uint8_t c){
 	
-	int32_t tmp = x%10 + sum_number(x/10);
-	return tmp;
-}
-
-void even(int32_t x)
-{
-	x%2 == 0 ? printf("YES") : printf("NO");
 }
 
 int main(int argc, char **argv)
 {
-	int32_t x;
-	scanf("%d", &x);
-	even(sum_number(x));
-
-	return 0;
+    int32_t x;
+    scanf("%d", &x);
+    
+    return 0;
 }
 

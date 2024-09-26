@@ -27,26 +27,34 @@
 #include <math.h>
 #include <inttypes.h>
 
-int32_t sum_number(int32_t x)
+void is_prime(int32_t x)
 {
-	if(x == 0)
-		return 0;
-	
-	int32_t tmp = x%10 + sum_number(x/10);
-	return tmp;
-}
-
-void even(int32_t x)
-{
-	x%2 == 0 ? printf("YES") : printf("NO");
+	if (x == 1 || x == 0)
+	{
+		printf("NO");
+		return;
+	}
+    int32_t tmp = 0;
+    for (int i = 1; i <= x; i++)
+	{
+		if(x%i == 0)
+			tmp++;
+	}
+	if (tmp > 2)
+	{
+		printf("NO");;
+	}
+	else
+	{
+		printf("YES");
+	}
 }
 
 int main(int argc, char **argv)
 {
-	int32_t x;
-	scanf("%d", &x);
-	even(sum_number(x));
-
-	return 0;
+    int32_t x;
+    scanf("%d", &x);
+	is_prime(x);
+    return 0;
 }
 

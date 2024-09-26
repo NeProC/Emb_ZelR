@@ -31,8 +31,8 @@ uint64_t seed(int32_t n)
 	uint64_t tmp = 1;
 	for (int i = 0; i < n-1; i++)
 	{
-		//tmp *= 2;
-		tmp = tmp << 1;
+		//tmp *= 2;								//умножаем колличество на 2
+		tmp = tmp << 1;							//умножаем сдвигом
 	}
 	return tmp;
 }

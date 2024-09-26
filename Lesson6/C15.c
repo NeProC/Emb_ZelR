@@ -27,26 +27,25 @@
 #include <math.h>
 #include <inttypes.h>
 
-int32_t sum_number(int32_t x)
+int32_t grow_up(int32_t x)
 {
-	if(x == 0)
-		return 0;
-	
-	int32_t tmp = x%10 + sum_number(x/10);
-	return tmp;
-}
-
-void even(int32_t x)
-{
-	x%2 == 0 ? printf("YES") : printf("NO");
+	while(x > 9)							//
+	{
+		if(x%10 <= (x%100)/10)
+		{
+			return 0;
+		}
+	//printf("%d\n", x);
+	x /= 10;
+	}
+	return 1;
 }
 
 int main(int argc, char **argv)
 {
 	int32_t x;
 	scanf("%d", &x);
-	even(sum_number(x));
-
+	grow_up(x) ? printf("YES") : printf("NO");
 	return 0;
 }
 
