@@ -27,41 +27,16 @@
 #include <math.h>
 #include <inttypes.h>
 
-int32_t sum(int32_t i)
+int32_t pri_rev(int32_t i)
 {
-	int32_t tmp = 0;
-	while(i != 0){
-		tmp += i%10;
-		i /= 10;
-	}
-	return tmp;
-}
-
-int32_t composition(int32_t i)
-{
-	int32_t tmp = 1;
-	while(i != 0){
-		tmp *= i%10;
-		i /= 10;
-	}
-	return tmp;
-}
-
-void is_happy_number(int32_t i)
-{
-	if(sum(i) == composition(i)){
-		printf("YES");
-		return;
-	}
-	printf("NO");
+    
 }
 
 int main(int argc, char **argv)
 {
-    int32_t x;
-    scanf("%d", &x);
-    is_happy_number(x);
+    int32_t n;
+    scanf("%d", &n);
+    printf("%d\n", pri_rev(n));
     return 0;
 }
-
 

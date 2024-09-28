@@ -29,31 +29,33 @@
 
 int32_t sum(int32_t i)
 {
-	int32_t tmp = 0;
-	while(i != 0){
-		tmp += i%10;
-		i /= 10;
-	}
-	return tmp;
+    if(i == 0)
+        return 0;
+    int32_t tmp = 0;
+    
+    tmp = (i % 10) + sum(i / 10);
+    
+    return tmp;
 }
 
 int32_t composition(int32_t i)
 {
-	int32_t tmp = 1;
-	while(i != 0){
-		tmp *= i%10;
-		i /= 10;
-	}
-	return tmp;
+    if(i == 0) 
+        return 1;
+    int32_t tmp = 1;
+    
+    tmp *= (i % 10) * composition(i / 10);
+    
+    return tmp;
 }
 
 void is_happy_number(int32_t i)
 {
-	if(sum(i) == composition(i)){
-		printf("YES");
-		return;
-	}
-	printf("NO");
+    if(sum(i) == composition(i)){
+        printf("YES");
+        return;
+    }
+    printf("NO");
 }
 
 int main(int argc, char **argv)

@@ -27,41 +27,20 @@
 #include <math.h>
 #include <inttypes.h>
 
-int32_t sum(int32_t i)
-{
-	int32_t tmp = 0;
-	while(i != 0){
-		tmp += i%10;
-		i /= 10;
-	}
-	return tmp;
-}
-
-int32_t composition(int32_t i)
-{
-	int32_t tmp = 1;
-	while(i != 0){
-		tmp *= i%10;
-		i /= 10;
-	}
-	return tmp;
-}
-
-void is_happy_number(int32_t i)
-{
-	if(sum(i) == composition(i)){
-		printf("YES");
-		return;
-	}
-	printf("NO");
+int32_t is_digit(void){
+    int32_t count_num = 0;
+    int8_t c;
+    while( (c = getchar()) != '.'){
+        if( c >= '0' && c <= '9'){
+            count_num++;
+        }
+    }
+    return count_num;
 }
 
 int main(int argc, char **argv)
 {
-    int32_t x;
-    scanf("%d", &x);
-    is_happy_number(x);
+    printf("%d\n", is_digit());
     return 0;
 }
-
 
