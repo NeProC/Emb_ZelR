@@ -27,13 +27,12 @@
 #include <math.h>
 #include <inttypes.h>
 
-void pri_num(uint32_t i)
+void dec_to_bin(uint32_t i)
 {
-    if(i == 0){
-        return;
-    }
-    printf("%d ", i%10);
-    pri_num(i / 10);
+    if(i >= 2){
+        dec_to_bin(i / 2);
+    }    
+    printf("%d", i%2);
     return;
 }
 
@@ -41,12 +40,7 @@ int main(int argc, char **argv)
 {
     uint32_t n;
     scanf("%d", &n);
-    if(n == 0){
-        printf("%d\n", n);
-    }
-    else{    
-        pri_num(n);
-    }
+    dec_to_bin(n);
     return 0;
 }
 

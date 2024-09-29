@@ -27,26 +27,25 @@
 #include <math.h>
 #include <inttypes.h>
 
-void pri_num(uint32_t i)
+uint32_t is_prime(uint32_t n, uint32_t del)
 {
-    if(i == 0){
-        return;
+    if(del == 0){
+        return 0;
     }
-    printf("%d ", i%10);
-    pri_num(i / 10);
-    return;
+        
+    uint32_t flag = 0;
+    n % del == 0 ? flag++ : flag;
+    flag += is_prime(n, del - 1);
+    
+    return flag;
 }
 
 int main(int argc, char **argv)
 {
-    uint32_t n;
-    scanf("%d", &n);
-    if(n == 0){
-        printf("%d\n", n);
-    }
-    else{    
-        pri_num(n);
-    }
+    int32_t a, del;
+    scanf("%d", &a);
+    del = a;
+    is_prime(a, del) == 2 ? printf("YES") : printf("NO");
     return 0;
 }
 

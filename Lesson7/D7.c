@@ -27,13 +27,13 @@
 #include <math.h>
 #include <inttypes.h>
 
-void pri_num(uint32_t i)
+void reverse_num(uint32_t i)
 {
-    if(i == 0){
+    if(i == 0)
         return;
-    }
-    printf("%d ", i%10);
-    pri_num(i / 10);
+    
+    printf("%d ", i);
+    reverse_num(i - 1);    
     return;
 }
 
@@ -41,12 +41,7 @@ int main(int argc, char **argv)
 {
     uint32_t n;
     scanf("%d", &n);
-    if(n == 0){
-        printf("%d\n", n);
-    }
-    else{    
-        pri_num(n);
-    }
+    reverse_num(n);
     return 0;
 }
 

@@ -27,26 +27,22 @@
 #include <math.h>
 #include <inttypes.h>
 
-void pri_num(uint32_t i)
+void reverse_string(void)
 {
-    if(i == 0){
-        return;
-    }
-    printf("%d ", i%10);
-    pri_num(i / 10);
+    int8_t c;
+    c = getchar();
+    if(c != '.'){
+        reverse_string();
+        printf("%c", c);
+    }        
     return;
 }
 
 int main(int argc, char **argv)
 {
-    uint32_t n;
-    scanf("%d", &n);
-    if(n == 0){
-        printf("%d\n", n);
-    }
-    else{    
-        pri_num(n);
-    }
+    //uint32_t n;
+    //scanf("%d", &n);
+    reverse_string();
     return 0;
 }
 

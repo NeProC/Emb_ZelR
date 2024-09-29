@@ -27,26 +27,20 @@
 #include <math.h>
 #include <inttypes.h>
 
-void pri_num(uint32_t i)
+uint32_t sum_digits(int32_t a)
 {
-    if(i == 0){
-        return;
-    }
-    printf("%d ", i%10);
-    pri_num(i / 10);
-    return;
+    if(a == 0)
+        return 0;
+    uint32_t sum = 0;
+    sum += a%10 + sum_digits(a / 10);
+    return sum;
 }
 
 int main(int argc, char **argv)
 {
-    uint32_t n;
-    scanf("%d", &n);
-    if(n == 0){
-        printf("%d\n", n);
-    }
-    else{    
-        pri_num(n);
-    }
+    int32_t a;
+    scanf("%d", &a);
+    printf("%d\n", sum_digits(a));
     return 0;
 }
 

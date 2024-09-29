@@ -27,26 +27,24 @@
 #include <math.h>
 #include <inttypes.h>
 
-void pri_num(uint32_t i)
+void from_a_to_b(int32_t a, int32_t b)
 {
-    if(i == 0){
+    if(a == b){
+        printf("%d", a);
         return;
     }
-    printf("%d ", i%10);
-    pri_num(i / 10);
+    printf("%d ", a);
+    
+    a > b ? from_a_to_b(a - 1, b) : from_a_to_b(a + 1, b);      
+    
     return;
 }
 
 int main(int argc, char **argv)
 {
-    uint32_t n;
-    scanf("%d", &n);
-    if(n == 0){
-        printf("%d\n", n);
-    }
-    else{    
-        pri_num(n);
-    }
+    int32_t a, b;
+    scanf("%d%d", &a, &b);
+    from_a_to_b(a, b);
     return 0;
 }
 

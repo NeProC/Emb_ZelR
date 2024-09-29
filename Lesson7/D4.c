@@ -32,8 +32,9 @@ void pri_num(uint32_t i)
     if(i == 0){
         return;
     }
-    printf("%d ", i%10);
+    //printf("%d ", i%10);
     pri_num(i / 10);
+    printf("%d ", i%10);
     return;
 }
 
