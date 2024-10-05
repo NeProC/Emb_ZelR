@@ -27,7 +27,7 @@
 #include <stdint.h>
 #include <math.h>
 #include <inttypes.h>
-#define ARR_SIZE 10
+#define ARR_SIZE 12
 
 void scan_arr(int32_t arr[], int32_t len_arr);						//Запись значений в массив
 int32_t less_in_arr(int32_t arr[]);									//Меньшее значение в масиве
@@ -38,14 +38,15 @@ int32_t sum_in_arr(int32_t *arr, int32_t a, int32_t b);				//Сумма двух
 void print_arr(int32_t arr[], int32_t len_arr);						//Распечатать массив
 void swap_in_arr(int32_t *arr, int32_t i, int32_t j);				//Поменять местами две ячейки в массиве
 void bubble_sort( int32_t *arr, int32_t len);						//Сортировка массива по возрастанию пузырьковым методом 
+int32_t sum_arr_positiv(int32_t *arr, int32_t len);					//Сумма положительных ячеек массива
+float_t arithmetic_mean(int32_t *arr, int32_t len);					//Средне арифметическое значение массива
 
 int main()
 {
     int32_t len_arr = ARR_SIZE;
     int32_t arr[len_arr];
     scan_arr(arr, len_arr);
-    bubble_sort(arr, len_arr);
-    printf("%d\n", sum_in_arr(arr, 0, 1));
+    printf("%.2f\n", arithmetic_mean(arr, len_arr));
     return 0;
 }
 
@@ -147,3 +148,26 @@ void bubble_sort( int32_t *arr, int32_t len)
         }
     }
 } 
+
+int32_t sum_arr_positiv(int32_t *arr, int32_t len)
+{
+    int32_t sum = 0;
+    for (int i = 0; i < len; i++)
+    {
+        if( *(arr + i) > 0){
+            sum += *(arr + i);
+        }
+    }
+    return sum;
+}
+
+float_t arithmetic_mean(int32_t *arr, int32_t len)
+{
+    float_t mid = 0;
+    
+    for(int32_t i = 0; i < len; i++)
+    {
+        mid += arr[i];
+    }
+    return mid/len;
+}
