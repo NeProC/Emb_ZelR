@@ -27,28 +27,22 @@
 #include <math.h>
 #include <inttypes.h>
 
-void num_ride(int32_t x)
+
+int32_t bin_one(uint32_t i)
 {
-    static int32_t m = 1, n = 0;                   //m счетчик числа,  n счетчик количества напечатанных чисел
-    
-    for(int32_t i = 1; n <= x-1 && i <= m; i++,n++)
-    {
-        printf("%d ", m);
+    if(i == 0){
+        return 0;
     }
-    
-    m++;
-    //printf(" <= %d\n%d < %d\n", m, n, x);
-    
-    if(n < x)
-        num_ride(x);
-    
-    return;
+        
+    int32_t sum_one = (i % 2) + bin_one(i / 2);
+    return sum_one;
 }
 
 int main(int argc, char **argv)
 {
-    int32_t a;
-    scanf("%d", &a);
-    num_ride(a);
+    uint32_t x;
+    scanf("%d", &x);
+    printf("%d\n", bin_one(x));;
     return 0;
 }
+
