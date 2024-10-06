@@ -57,19 +57,19 @@ void transfer_pos(int32_t *arr, int32_t *new_arr_pos, int32_t len);				//Пер�
 int32_t counting_positiv(int32_t *arr, int32_t len);							//Подсчет положительных чисел массива
 void transfer_neg(int32_t *arr, int32_t *new_arr_neg, int32_t len);				//Перенос в новый масси отрицательных чисел
 int32_t num_more_one(int32_t *arr, int32_t len);								//Поиск повторяющегося числа
+void num_one_in_arr(int32_t *arr, int32_t len);									//Вывод чисел встречающихся один раз
 
 
 
 int main()
 {
-    int32_t len_arr = ARR_SIZE, num;
+    int32_t len_arr = ARR_SIZE;
     int32_t arr[len_arr];
     
     scan_arr(arr, len_arr);
-    bubble_sort(arr, len_arr);
+//    bubble_sort(arr, len_arr);
     
-    num = num_more_one(arr, len_arr);
-    printf("%d\n", num);
+    num_one_in_arr(arr, len_arr);
     return 0;
 }
 
@@ -440,7 +440,24 @@ int32_t num_more_one(int32_t *arr, int32_t len)
     return more_num[1];
 }
 
-
+void num_one_in_arr(int32_t *arr, int32_t len)
+{
+    int32_t counter = 0;
+    for(int32_t i = 0; i < len; i++)
+    {
+        for(int32_t j = 0; j < len; j++)
+        {
+            if(arr[i] == arr[j]){
+                counter++;
+            }
+        }
+        if(counter == 1){
+            printf("%d ", arr[i]);
+        }
+        counter = 0;
+    }
+    return;
+}
 
 
 
