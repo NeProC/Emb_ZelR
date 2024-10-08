@@ -58,18 +58,21 @@ int32_t counting_positiv(int32_t *arr, int32_t len);							//Подсчет по
 void transfer_neg(int32_t *arr, int32_t *new_arr_neg, int32_t len);				//Перенос в новый масси отрицательных чисел
 int32_t num_more_one(int32_t *arr, int32_t len);								//Поиск повторяющегося числа
 void num_one_in_arr(int32_t *arr, int32_t len);									//Вывод чисел встречающихся один раз
+void division_nums(int32_t x);													//Вывод делителей
 
 
 
 int main()
 {
-    int32_t len_arr = ARR_SIZE;
-    int32_t arr[len_arr];
+//    int32_t len_arr = ARR_SIZE;
+//    int32_t arr[len_arr];
     
-    scan_arr(arr, len_arr);
+//    scan_arr(arr, len_arr);
 //    bubble_sort(arr, len_arr);
     
-    num_one_in_arr(arr, len_arr);
+    int32_t n;
+    scanf("%d", &n);
+    division_nums(n);
     return 0;
 }
 
@@ -458,3 +461,26 @@ void num_one_in_arr(int32_t *arr, int32_t len)
     }
     return;
 }
+
+void division_nums(int32_t x)
+{
+    int32_t start = 2, end = 10;
+    int32_t counter = 0;
+    
+    do
+    {
+        for (int32_t i = 2; i <= x; i++)
+        {
+            if(i % start == 0)
+                counter++;
+        }
+        printf("%d %d\n", start, counter);
+        start++;
+        counter = 0;
+    } while (start != end);
+    
+}
+
+
+
+

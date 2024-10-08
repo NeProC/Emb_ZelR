@@ -58,18 +58,30 @@ int32_t counting_positiv(int32_t *arr, int32_t len);							//Подсчет по
 void transfer_neg(int32_t *arr, int32_t *new_arr_neg, int32_t len);				//Перенос в новый масси отрицательных чисел
 int32_t num_more_one(int32_t *arr, int32_t len);								//Поиск повторяющегося числа
 void num_one_in_arr(int32_t *arr, int32_t len);									//Вывод чисел встречающихся один раз
+void division_nums(int32_t x);													//Вывод делителей
+int32_t num_of_N(int32_t n);													//Вывод кол-ва цифр в числе 
+void print_arr_rev(int32_t arr[], int32_t len_arr);								//Реверсивный вывод массива
+void writing_numbers(int32_t *arr, int32_t len, int32_t x);						//Запись цифр числа в массив
+
 
 
 
 int main()
 {
-    int32_t len_arr = ARR_SIZE;
-    int32_t arr[len_arr];
+//    int32_t len_arr = ARR_SIZE;
+//    int32_t arr[len_arr];
     
-    scan_arr(arr, len_arr);
+//    scan_arr(arr, len_arr);
 //    bubble_sort(arr, len_arr);
     
-    num_one_in_arr(arr, len_arr);
+    int32_t num;
+    scanf("%d", &num);
+    int32_t num_of_dig = num_of_N(num);
+    int32_t arr[num_of_dig];
+    
+    writing_numbers(arr, num_of_dig, num);
+    print_arr_rev(arr, num_of_dig);
+    
     return 0;
 }
 
@@ -455,6 +467,55 @@ void num_one_in_arr(int32_t *arr, int32_t len)
             printf("%d ", arr[i]);
         }
         counter = 0;
+    }
+    return;
+}
+
+void division_nums(int32_t x)
+{
+    int32_t start = 2, end = 10;
+    int32_t counter = 0;
+    
+    do
+    {
+        for (int32_t i = 2; i <= x; i++)
+        {
+            if(i % start == 0)
+                counter++;
+        }
+        printf("%d %d\n", start, counter);
+        start++;
+        counter = 0;
+    } while (start != end);
+    
+}
+
+int32_t num_of_N(int32_t n)
+{
+    int32_t counter = 0;
+    while (n != 0)
+    {
+        counter++;
+        n /= 10;
+    }
+    return counter;;
+}
+
+void print_arr_rev(int32_t arr[], int32_t len_arr)
+{
+    for (int i = len_arr - 1; i >= 0; i--)
+    {
+        printf("%d ", arr[i]);
+    }
+//    printf("\n");
+}
+
+void writing_numbers(int32_t *arr, int32_t len, int32_t x)
+{
+    for (int i = 0; i < len; i++)
+    {
+        arr[i] = x % 10;
+        x /= 10;
     }
     return;
 }
