@@ -35,20 +35,20 @@ void section_sort(int32_t len, int32_t *arr);						//Сортировка сек
 void scan_arr(int32_t *arr, int32_t len);							//Считывание массива
 void print_arr (int32_t *arr, int32_t len);							//Вывод массива
 void sort_even_odd(int n, int a[]);									//Сортировка и вывод четных и не четных чисел
+void number_in_arr(int32_t *arr, int32_t len, int32_t num);			//
+int32_t len_of_num (int32_t n);										//Длина числа
 
 
 
-int main(int argc, char **argv)
+int main()
 {
-    int32_t arr[ARR_SIZE];
-    int32_t len = ARR_SIZE;
-    
-    scan_arr(arr, len);
-    
-//    print_arr(arr, len);
-    sort_even_odd(len, arr);
+    int32_t num;
+    scanf("%d", &num);
+    int32_t len = len_of_num(num);
+    int32_t arr[len];
+    number_in_arr(arr, len, num);
+    section_sort(len, arr);
     print_arr(arr, len);
-    
     return 0;
 }
 
@@ -126,4 +126,23 @@ void sort_even_odd(int n, int a[])
         a[i + even] = arr_not_even[i];
     }
     return;
+}
+
+void number_in_arr(int32_t *arr, int32_t len, int32_t num)
+{
+    for(int32_t i = 0; i < len; i++){
+        arr[i] = num % 10;
+        num /= 10;
+    }
+    return;
+}
+
+int32_t len_of_num (int32_t n)
+{
+    int32_t len = 0;
+    while(n != 0){
+        len++;
+        n /= 10;
+    }
+    return len;
 }
