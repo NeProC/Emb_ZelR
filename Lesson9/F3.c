@@ -34,6 +34,7 @@
 void section_sort(int32_t len, int32_t *arr);						//Сортировка секциями
 void scan_arr(int32_t *arr, int32_t len);							//Считывание массива
 void print_arr (int32_t *arr, int32_t len);							//Вывод массива
+void sort_even_odd(int n, int a[]);									//Сортировка и вывод четных и не четных чисел
 
 
 
@@ -43,7 +44,9 @@ int main(int argc, char **argv)
     int32_t len = ARR_SIZE;
     
     scan_arr(arr, len);
-    section_sort(len, arr);
+    
+//    print_arr(arr, len);
+    sort_even_odd(len, arr);
     print_arr(arr, len);
     
     return 0;
@@ -81,6 +84,46 @@ void print_arr (int32_t *arr, int32_t len)
     for (int i = 0; i < len; i++)
     {
         printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return;
+}
+
+void sort_even_odd(int n, int a[])
+{
+    int even = 0, not_even = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(a[i] % 2 == 0)
+            even++;
+    }
+    not_even = n - even;
+
+    int arr_even[even], arr_not_even[not_even];
+    int count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(a[i] % 2 == 0){
+            arr_even[count++] = a[i];
+//            count++;
+        }
+    }
+    count = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(a[i] % 2 != 0){
+            arr_not_even[count++] = a[i];
+//            count++;
+        }
+    }
+    
+    for (int i = 0; i < even ; i++)
+    {
+        a[i] = arr_even[i];
+    }
+    for (int i = 0; i < not_even ; i++)
+    {
+        a[i + even] = arr_not_even[i];
     }
     return;
 }
