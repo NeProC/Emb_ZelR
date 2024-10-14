@@ -28,7 +28,7 @@
 #include <math.h>
 #include <inttypes.h>
 #include <string.h>
-#define ARR_SIZE 1000
+#define ARR_SIZE 100
 #define SWAP_SIZE 4
 
 void section_sort(uint32_t len, uint32_t *arr);						//Сортировка секциями
@@ -41,19 +41,27 @@ void num_of_digit(uint32_t *arr, uint32_t len_arr);					//Подсчет чис�
 void read_str(char *arr);											//Считывание строки чисел и помещение в массив
 void count_of_dig(char *arr_c, int32_t *arr_dig, int32_t len);		//Подсчет цифр в массиве
 void pri_count_dig(int32_t *arr);									//Вывод подсчета цифр в строке
-
+void select_dig(char *arr);											//
+void pri_char(char *arr, int32_t len);								//Печать массива символов
+void print_digit(char s[]);											//Подсчет цифр в строке
 
 
 int main()
 {
-    char arr_num[ARR_SIZE];
-    int32_t arr_dig[10] = {0};
-    read_str(arr_num);
-    int32_t len;
-    len = strlen(arr_num);
-    count_of_dig(arr_num, arr_dig, len);
-    pri_count_dig(arr_dig);
-    
+/*    char arr_num[ARR_SIZE];
+    select_dig(arr_num);
+    int32_t len = strlen(arr_num);
+    int32_t count[10] = {0};
+    count_of_dig(arr_num, count, len);
+    pri_count_dig(count);
+//    pri_char(arr_num, 5); */
+    char s[ARR_SIZE];
+    char c;
+    int index = 0;
+    while((c = getchar()) != '\n'){
+        s[index++] = c;
+    }
+    print_digit(s);
     return 0;
 }
 
@@ -199,4 +207,53 @@ void pri_count_dig(int32_t *arr)
             printf("%d %d\n", i, *(arr + i));
     }
     return;
+}
+
+void select_dig(char *arr)
+{
+    char c;
+    int32_t i = 0;
+    
+    while( (c = getchar()) != '\n'){
+        if(c >= '0' && c <= '9'){
+            *(arr + i) = c;
+            i++;
+        }
+    }
+    *(arr + i) = '\0';
+    return;
+}
+
+void pri_char(char *arr, int32_t len)
+{
+    for (int32_t i = 0; i < len; i++)
+    {
+        printf("%c ", arr[i]);
+    }
+    return;
+}
+
+void print_digit(char s[])
+{
+    char arr[100] = {0};
+    int count = 0, i = 0;
+
+    while(s[i] != '\0'){
+        if(*(s + i) >= '0' && *(s + i) <= '9')
+            arr[count++] = s[i];
+        i++;
+    }
+    arr[count] = '\0';
+    
+    int len = strlen(arr);
+    int arr_dig[10] = {0};
+
+    for(int i = 0; i < len; i++){
+        arr_dig[arr[i] - '0']++;
+    }
+
+    for(int i = 0; i < 10; i++){
+        if(*(arr_dig + i) != 0)
+            printf("%d %d\n", i, arr_dig[i]);
+    }
 }
