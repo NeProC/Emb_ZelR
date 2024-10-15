@@ -21,49 +21,55 @@
  * 
  */
 
-
+#define ARR_SIZE 1000
 #include <stdio.h>
 #include <string.h>
 
- int compression(int a[], int b[], int N)
+int num_of_sequence(int arr[], int len, int n)
 {
-    int counter = 1, index = 0, i = 0;			//Counter - счетчик последовательных значений
-    if(a[0] == 1){								//index - номер элемента в b массиве
-        b[0] = 0;								//i - перебор a массива
-        index = 1;
-    }
-    for (; i < N-1; i++)
+    int flag = 0;
+    for (int i = n; i < n + len; i++)
     {
-        if(*(a + i) == *(a + i + 1)){
-            counter++;
+        for (int j = 0; j < len; j++)
+        {
+            if(i == arr[j])
+                flag++;
         }
-        else{
-            *(b + index) = counter;
-            index++;
-            counter = 1;
-        }
+        if(flag == 0)
+            return i;
+        flag--;
     }
-    *(b + index) = counter;
-    index++;
-    return index;
+    return 0;
 }
 
+int scan_sequence(int arr[])
+{
+    int index = 0;
+    do
+    {
+        scanf("%d", &arr[index++]);
+    } while (arr[index - 1] != 0);
+    return index;
+
+}
+
+int min_in_arr(int arr[], int len)
+{
+    int min = arr[0];
+    for (int i = 1; i < len - 1; i++)
+    {
+        min = min < arr[i] ? min : arr[i];
+    }
+    return min;
+}
 
 int main(int argc, char **argv)
 {
-    int N = 100, M = 100;
-    int a[N], b[M];
-    for (int i = 0; i < N; i++)
-    {
-        scanf("%d", &a[i]);
-    }
-    
-    int len = compression(a, b, N);
-    for (int i = 0; i < len; i++)
-    {
-        printf("%d ", *(b + i));
-    }
-    printf("%d\n", len);
+    int arr[ARR_SIZE];
+    int len = scan_sequence(arr);
+    int n = min_in_arr(arr, len);
+    int z = num_of_sequence(arr, len, n);
+    printf("%d\n", z);
     return 0;
 }
 

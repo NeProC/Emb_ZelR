@@ -21,49 +21,50 @@
  * 
  */
 
-
+#define ARR_SIZE 10
 #include <stdio.h>
 #include <string.h>
 
- int compression(int a[], int b[], int N)
+void swap_negmax_last(int size, int a[])
 {
-    int counter = 1, index = 0, i = 0;			//Counter - счетчик последовательных значений
-    if(a[0] == 1){								//index - номер элемента в b массиве
-        b[0] = 0;								//i - перебор a массива
-        index = 1;
-    }
-    for (; i < N-1; i++)
-    {
-        if(*(a + i) == *(a + i + 1)){
-            counter++;
+    int max_neg = 0, index_max_neg;
+    for (int i = 0; i < size; i++){
+        if(a[i] < 0){
+            max_neg = a[i];
+            index_max_neg = i;
+            break;
         }
-        else{
-            *(b + index) = counter;
-            index++;
-            counter = 1;
-        }
-    }
-    *(b + index) = counter;
-    index++;
-    return index;
-}
-
-
-int main(int argc, char **argv)
-{
-    int N = 100, M = 100;
-    int a[N], b[M];
-    for (int i = 0; i < N; i++)
-    {
-        scanf("%d", &a[i]);
     }
     
-    int len = compression(a, b, N);
-    for (int i = 0; i < len; i++)
-    {
-        printf("%d ", *(b + i));
+    if(max_neg == 0)
+        return;
+    
+    for (int i = 0; i < size; i++){
+        if(a[i] < 0 && a[i] > max_neg){
+            max_neg = a[i];
+            index_max_neg = i;
+        }
     }
-    printf("%d\n", len);
+    
+    a[index_max_neg] = a[size - 1];
+    a[size - 1] = max_neg;
+    return;
+}
+
+int main()
+{
+    int arr[ARR_SIZE];
+    for (int i = 0; i < ARR_SIZE; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    
+    swap_negmax_last(ARR_SIZE, arr);
+    
+    for (int i = 0; i < ARR_SIZE; i++)
+{
+    printf("%d ", arr[i]);
+}
     return 0;
 }
 
