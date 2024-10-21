@@ -25,39 +25,55 @@
 #include <stdio.h>
 #include <string.h>
 
-void scan_char (char ch[])
+void scan_matrix(int matrix[5][5])
 {
-    char c;
-    int i = 0;
-    while( (c = getchar()) != '.'){
-        ch[i++] = c;
+    //printf("yep");
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            scanf("%d", &matrix[i][j]);
+        }
     }
-    ch[i] = '\0';
     return;
 }
 
-void count_char(char ch[], int len)
+void print_matrix(int matrix[5][5])
 {
-    int counter = 1;
-    int i;
-    for (i = 0; i < len - 1; i++)
+    for (int i = 0; i < 5; i++)
     {
-        if(ch[i] == ch[i + 1])
-            counter++;
-        else{
-            printf("%c%d", ch[i], counter);
-            counter = 1;
+        for (int j = 0; j < 5; j++)
+        {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    return;
+}
+
+int main_diagonal(int matrix[5][5])
+{
+    int sum = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if(i == j)
+                sum += matrix[i][j];
         }
     }
-    printf("%c%d\n", ch[i], counter);
+    return sum;
 }
 
 int main()
 {
-    char c[ARR_SIZE] = {0};
-    scan_char(c);
-    int len = strlen(c);
-    count_char(c, len);
+    int matrix[5][5] = {0};/*{{10,9,98,65},
+                          {8,-9,-4,6},
+                          {15,6,78,-8},
+                          {15,6,78,-8},
+                          {15,6,78,-8}};;*/
+    scan_matrix(matrix);
+    printf("%d\n", main_diagonal(matrix));
     return 0;
 }
 

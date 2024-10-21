@@ -25,39 +25,42 @@
 #include <stdio.h>
 #include <string.h>
 
-void scan_char (char ch[])
+void white_or_black(char l, char h)
 {
-    char c;
-    int i = 0;
-    while( (c = getchar()) != '.'){
-        ch[i++] = c;
+    int lon, high;
+    
+    high = h - '0';
+    if(high > 8)
+        return;
+    
+    switch(l){
+    case 'A':lon = 1; break;
+    case 'B':lon = 2; break;
+    case 'C':lon = 3; break;
+    case 'D':lon = 4; break;
+    case 'E':lon = 5; break;
+    case 'F':lon = 6; break;
+    case 'G':lon = 7; break;
+    case 'H':lon = 8; break;
+    default: return;
     }
-    ch[i] = '\0';
+    
+    if(high % 2 == 0 && lon % 2 == 0)
+        printf("BLACK");
+    else if(high % 2 != 0 && lon % 2 != 0)
+        printf("BLACK");
+    else 
+        printf("WHITE");
+        
     return;
-}
-
-void count_char(char ch[], int len)
-{
-    int counter = 1;
-    int i;
-    for (i = 0; i < len - 1; i++)
-    {
-        if(ch[i] == ch[i + 1])
-            counter++;
-        else{
-            printf("%c%d", ch[i], counter);
-            counter = 1;
-        }
-    }
-    printf("%c%d\n", ch[i], counter);
 }
 
 int main()
 {
-    char c[ARR_SIZE] = {0};
-    scan_char(c);
-    int len = strlen(c);
-    count_char(c, len);
+    char l, h;
+    scanf("%1c%1c", &l, &h);
+    white_or_black(l, h);
+    
     return 0;
 }
 
