@@ -24,9 +24,9 @@ int main(int argc, char **argv)
     middle_t_in_month(info, num, 9);
     min_in_month(info, num, 9);
     max_in_month(info, num, 9);
-    middle_t_in_year(info, num, 2021);
-    min_in_year(info, num, 2021);
-    max_in_year(info, num, 2021);
+    // middle_t_in_year(info, num, 2021);
+    // min_in_year(info, num, 2021);
+    // max_in_year(info, num, 2021);
     //~ print_info(info, num);
 
     return 0;
