@@ -15,7 +15,7 @@ typedef struct
     int8_t t;
 } sens;
 
-void add_rec( sens *info, int num, uint16_t year, uint8_t month,
+void add_rec( sens info[], int num, uint16_t year, uint8_t month,
              uint8_t day, uint8_t hour, uint8_t minute, int8_t t); // Функция добавления структуры в массив
 int add_info( sens info[]);                                         // Ф-ция добавления значений
 void print_info( sens info[], int num);                             // Вывод данных
