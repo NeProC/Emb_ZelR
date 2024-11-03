@@ -4,11 +4,7 @@
 ==================================================================================
 студент Зеленев Р. А.
 */
-
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-#include <math.h>
+ 
 #include "temp_functions.h"
 #define SIZE 100 // Размер массива структур
 
