@@ -13,7 +13,7 @@ void add_rec(sens info[], int num, uint16_t year, uint8_t month,
     return;
 }
 
-int add_info(sens info[])
+int add_info(sens info[])                                       //Ввод фикс данных
 {
     int counter = 0;
     add_rec(info, counter++, 2021, 9, 16, 23, 55, 9);
@@ -22,6 +22,26 @@ int add_info(sens info[])
     add_rec(info, counter++, 2021, 9, 5, 23, 55, -10);
     add_rec(info, counter++, 2021, 9, 5, 23, 56, 1);
     return counter;
+}
+
+int add_info_from_csv(sens info[])                                       //Из scv
+{
+    char *input_f = "temperature_small.csv";
+    char c;
+    FILE *fp;
+
+    if((fp = fopen(input_f, "r")) == NULL )
+    {
+        perror("Can't find opening file");
+        return 1;
+    }
+    int num = 0;
+
+
+
+    
+    fclose(fp);
+    return num;
 }
 
 uint64_t date_to_num(sens *info)
@@ -166,5 +186,22 @@ void max_in_year(sens info[], int num, int16_t year)
     }
 
     printf("Maximal t in %d = %d\n", year, max);
+    return;
+}
+
+void help (void)
+{
+    printf("-h\thelp massege");
+    return;
+}
+
+void del_rec (sens info[], int num)
+{
+    info[num].year = 0;
+    info[num].month = 0;
+    info[num].day = 0;
+    info[num].hour = 0;
+    info[num].minute = 0;
+    info[num].t = 0;
     return;
 }

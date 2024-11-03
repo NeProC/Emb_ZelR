@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <math.h>
+#include <unistd.h>
 
 typedef struct 
 { // Структура данных датчика
@@ -29,5 +30,7 @@ void max_in_month( sens info[], int num, int8_t month);             // Макс�
 void middle_t_in_year( sens info[], int num, int16_t year);         // Средняя температура за год
 void min_in_year( sens info[], int num, int16_t year);              // Минимальная температура за выбраный год
 void max_in_year( sens info[], int num, int16_t year);              // Максимальная температура за выбраный год
-
+void help (void);                                                   //Функция печати ключа -h (help)
+void del_rec (sens info[], int num);                                //Удаление\обнуление структуры в массиве
+int add_info_from_csv(sens info[]);                                 //Добавление в массив из csv файла 
 #endif
