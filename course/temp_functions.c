@@ -13,7 +13,7 @@ void add_rec(sens info[], int num, uint16_t year, uint8_t month,
     return;
 }
 
-int add_info(sens info[])                                       //Ввод фикс данных
+int add_info(sens info[]) // Ввод фикс данных
 {
     int counter = 0;
     add_rec(info, counter++, 2021, 9, 16, 23, 55, 9);
@@ -24,22 +24,25 @@ int add_info(sens info[])                                       //Ввод фи�
     return counter;
 }
 
-int add_info_from_csv(sens info[])                                       //Из scv
+int add_info_from_csv(sens info[], char *filename) // Из scv
 {
-    char *input_f = "temperature_small.csv";
-    char c;
+    char *input_f = filename;
+    char buffer[1024];
     FILE *fp;
 
-    if((fp = fopen(input_f, "r")) == NULL )
+    if ((fp = fopen(input_f, "r")) == NULL)
     {
         perror("Can't find opening file");
         return 1;
     }
     int num = 0;
 
+    while (fgets(buffer, sizeof(buffer), fp))
+    {
+        if (sscanf(buffer, "%d;%d;%d;%d;%d;%d", &info[num].year, &info[num].month, &info[num].day, &info[num].hour, &info[num].minute, &info[num].t) == 6)
+            num++;
+    }
 
-
-    
     fclose(fp);
     return num;
 }
@@ -189,13 +192,13 @@ void max_in_year(sens info[], int num, int16_t year)
     return;
 }
 
-void help (void)
+void help(void)
 {
     printf("-h\thelp massege");
     return;
 }
 
-void del_rec (sens info[], int num)
+void del_rec(sens info[], int num)
 {
     info[num].year = 0;
     info[num].month = 0;
@@ -204,4 +207,14 @@ void del_rec (sens info[], int num)
     info[num].minute = 0;
     info[num].t = 0;
     return;
+}
+
+int convert_in_num(char buf[])
+{
+    int counter = 0;
+    int num;
+    while (*(buf + counter) != ';')
+    {
+        counter++;
+    }
 }

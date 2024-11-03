@@ -2,7 +2,7 @@ CC=gcc.exe
 
 all: Sens_prog  
 	del *.o
-	Sens_prog.exe
+#	Sens_prog.exe
 
 Sens_prog: Sens_info.o temp_functions.o
 	$(CC) -o Sens_prog Sens_info.o temp_functions.o
