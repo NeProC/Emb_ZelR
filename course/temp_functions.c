@@ -219,22 +219,21 @@ int convert_in_num(char buf[])
     }
 }
 
-void print_month(sens info[], char month, int num)
+void print_month(sens info[], uint8_t month, int num)
 {
     for (int i = 0; i < num; i++)
     {
-        if(info[i].month == month)
+        if (info[i].month == month)
         {
-             printf("%04d - %02d - %02d - %02d - %02d\tt = %3d%cC\n",
-               info[i].year,
-               info[i].month,
-               info[i].day,
-               info[i].hour,
-               info[i].minute,
-               info[i].t,
-               0x27);
+            printf("%04d - %02d - %02d - %02d - %02d\tt = %3d%cC\n",
+                   info[i].year,
+                   info[i].month,
+                   info[i].day,
+                   info[i].hour,
+                   info[i].minute,
+                   info[i].t,
+                   0x27);
         }
-            
     }
     return;
 }
