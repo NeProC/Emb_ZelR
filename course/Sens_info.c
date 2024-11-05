@@ -11,6 +11,7 @@
 int main(int argc, char **argv)
 {
     sens info[SIZE];
+    int num;
     int k = 0;
     opterr = 0;
     //======================================= аргументы командной строки
@@ -25,12 +26,15 @@ int main(int argc, char **argv)
         case 'f':
             char *file_name = NULL;
             file_name = optarg;
-            int num = add_info_from_csv(info, file_name);
+            num = add_info_from_csv(info, file_name);
             if(num != 0)
-                print_info(info, num);
+                // print_info(info, num);
+                // print_month(info, 1, num);
             break;
         case 'm':
-
+            char m = (char)*optarg;
+            printf("%c", m);
+            // print_month(info, m, num);
             break;
         default:
             break;
