@@ -1,8 +1,8 @@
 CC=gcc.exe
 
 all: Sens_prog  
-#	del *.o							#для Win10
-	rm *.o							#для Linux
+	del *.o							#для Win10
+#	rm *.o							#для Linux
 #	Sens_prog.exe
 
 Sens_prog: Sens_info.o temp_functions.o

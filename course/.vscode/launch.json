@@ -1,6 +1,7 @@
 {
   "version": "0.2.0",
   "configurations": [
+  
     {
       "name": "C/C++ Runner: Debug Session",
       "type": "cppdbg",
@@ -9,7 +10,8 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/Users/r.zelenev/Desktop/Emb_ZelR/course",
-      "program": "c:/Users/r.zelenev/Desktop/Emb_ZelR/course/build/Debug/outDebug",
+ //     "program": "c:/Users/r.zelenev/Desktop/Emb_ZelR/course/build/Debug/outDebuga",
+      "program": "C:/Users/r.zelenev/Desktop/Emb_ZelR/course/build/Debug/outDebug.exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

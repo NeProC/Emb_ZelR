@@ -7,15 +7,17 @@
 
 #include "temp_functions.h"
 #define SIZE 10000 // Размер массива структур
+#define DEBUG fprintf (stderr,"debug in %d line\n", __LINE__)
+
 
 int main(int argc, char **argv)
 {
     sens info[SIZE];
     int num;
     int k = 0;
-    opterr = 0;
+    
     //======================================= аргументы командной строки
-
+    opterr = 0;
     while ((k = getopt(argc, argv, "hf:m")) != -1)
     {
         switch (k)
@@ -28,7 +30,7 @@ int main(int argc, char **argv)
             file_name = optarg;
             num = add_info_from_csv(info, file_name);
             if(num != 0)
-                // print_info(info, num);
+                 print_info(info, num);
                 // print_month(info, 1, num);
             break;
         case 'm':
@@ -45,6 +47,12 @@ int main(int argc, char **argv)
     //  //   add_info_from_csv(info);
     //     printf("num = %d\n", num);
     //     print_info(info, num);
+
+
+
+
+
+
 
     return 0;
 }
