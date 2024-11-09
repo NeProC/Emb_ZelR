@@ -18,7 +18,7 @@ int main(int argc, char **argv)
     
     //======================================= аргументы командной строки
     opterr = 0;
-    while ((k = getopt(argc, argv, "hf:m")) != -1)
+    while ((k = getopt(argc, argv, "hf:m:")) != -1)
     {
         switch (k)
         {
@@ -29,14 +29,15 @@ int main(int argc, char **argv)
             char *file_name = NULL;
             file_name = optarg;
             num = add_info_from_csv(info, file_name);
+            printf("%d\n", num);
             if(num != 0)
                  print_info(info, num);
                 // print_month(info, 1, num);
             break;
         case 'm':
             char m = (char)*optarg;
-            printf("%c", m);
-            // print_month(info, m, num);
+            printf("%c\n", m);
+            print_month(info, m, num);
             break;
         default:
             break;

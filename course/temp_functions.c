@@ -221,6 +221,7 @@ int convert_in_num(char buf[])
 
 void print_month(sens info[], char month, int num)
 {
+    printf("%d", num);
     for (int i = 0; i < num; i++)
     {
         if(info[i].month == month)
