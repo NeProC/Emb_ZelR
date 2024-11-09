@@ -6,7 +6,11 @@
 */
 
 #include "temp_functions.h"
-#define SIZE 1000000 // Размер массива структур
+//#define SIZE 512 // Размер массива структур
+enum
+{
+    SIZE = 200000
+};
 #define DEBUG fprintf (stderr,"debug in %d line\n", __LINE__)
 
 
@@ -15,7 +19,8 @@ int main(int argc, char **argv)
     sens info[SIZE];
     int num;
     int k = 0;
-    
+ //   printf("Maximum Size of Array: %lu bytes\n", SIZE_MAX); 
+ //   printf("%d\n", sizeof(sens));
     //======================================= аргументы командной строки
     opterr = 0;
     while ((k = getopt(argc, argv, "hf:m:")) != -1)

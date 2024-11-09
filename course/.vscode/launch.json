@@ -9,9 +9,10 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/r.zelenev/Desktop/Emb_ZelR/course",
- //     "program": "c:/Users/r.zelenev/Desktop/Emb_ZelR/course/build/Debug/outDebuga",
-      "program": "C:/Users/r.zelenev/Desktop/Emb_ZelR/course/build/Debug/outDebug.exe",
+      //"cwd": "c:/Users/r.zelenev/Desktop/Emb_ZelR/course",
+      "cwd": "C:/Users/roman/Desktop/git/Emb_ZelR/course",
+      "program": "C:/Users/roman/Desktop/git/Emb_ZelR/course/build/Debug/outDebug.exe",
+ //     "program": "C:/Users/r.zelenev/Desktop/Emb_ZelR/course/build/Debug/outDebug.exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
