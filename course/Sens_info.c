@@ -6,7 +6,7 @@
 */
 
 #include "temp_functions.h"
-#define SIZE 10000 // Размер массива структур
+#define SIZE 1000000 // Размер массива структур
 #define DEBUG fprintf (stderr,"debug in %d line\n", __LINE__)
 
 
@@ -29,14 +29,11 @@ int main(int argc, char **argv)
             char *file_name = NULL;
             file_name = optarg;
             num = add_info_from_csv(info, file_name);
-            printf("%d\n", num);
-            if(num != 0)
-                 print_info(info, num);
-                // print_month(info, 1, num);
+            // if(num != 0)
+            //      print_info(info, num);
             break;
         case 'm':
-            char m = (char)*optarg;
-            printf("%c\n", m);
+            char m = *optarg - '0';
             print_month(info, m, num);
             break;
         default:
