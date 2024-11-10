@@ -199,7 +199,7 @@ void max_in_year(sens info[], int num, int16_t year)
 
 void help(void)
 {
-    printf("-h\thelp massege");
+    printf("-h\thelp massege\nValid key -f, -m, -o");
     return;
 }
 
@@ -307,6 +307,7 @@ void out_txt_mon(char *filename, char month)
     
     sens tmp[1];
     int32_t line = 0;
+    fprintf(fp_out, "year |mon |day |hour| min |\ttemp\n");
     while (fgets(buffer, sizeof(buffer), fp_in))
     {
         line++;
