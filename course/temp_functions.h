@@ -33,5 +33,7 @@ void max_in_year(sens info[], int num, int16_t year);              // Макси
 void help(void);                                                   // Функция печати ключа -h (help)
 void del_rec(sens info[], int num);                                // Удаление\обнуление структуры в массиве
 int add_info_from_csv(sens info[], char *filename);                // Добавление в массив из csv файла
-void print_month(sens info[], char month, int num);                    //Вывод значений определенного месяца
+void print_month(sens info[], char month, int num);                // Вывод значений определенного месяца
+void print_month_from_file(char *filename, char month);            // Печать значений в месяце из файла
+void out_txt_mon(char *filename, char month);                      //Файл с выходными данными по месяцу
 #endif

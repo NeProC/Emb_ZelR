@@ -41,6 +41,11 @@ int add_info_from_csv(sens info[], char *filename) // Из scv
     {
         if (sscanf(buffer, "%d;%d;%d;%d;%d;%d", &info[num].year, &info[num].month, &info[num].day, &info[num].hour, &info[num].minute, &info[num].t) == 6)
             num++;
+        if (num >= 199999)
+        {
+            fclose(fp);
+            return num;
+        }
     }
 
     fclose(fp);
@@ -223,18 +228,107 @@ void print_month(sens info[], char month, int num)
 {
     for (int i = 0; i < num; i++)
     {
-        if(info[i].month == month)
+        if (info[i].month == month)
         {
-             printf("%04d - %02d - %02d - %02d - %02d\tt = %3d%cC\n",
-               info[i].year,
-               info[i].month,
-               info[i].day,
-               info[i].hour,
-               info[i].minute,
-               info[i].t,
-               0x27);
+            printf("%04d - %02d - %02d - %02d - %02d\tt = %3d%cC\n",
+                   info[i].year,
+                   info[i].month,
+                   info[i].day,
+                   info[i].hour,
+                   info[i].minute,
+                   info[i].t,
+                   0x27);
         }
-            
     }
+    return;
+}
+
+void print_month_from_file(char *filename, char month)
+{
+    char *input_f = filename;
+    char buffer[1024];
+    FILE *fp;
+    sens tmp[1];
+    uint32_t line = 0;
+
+    if ((fp = fopen(input_f, "r")) == NULL)
+    {
+        perror("Can't find opening file");
+        return;
+    }
+
+    while (fgets(buffer, sizeof(buffer), fp))
+    {
+        line++;
+        if (sscanf(buffer, "%d;%d;%d;%d;%d;%d", &tmp[0].year, &tmp[0].month, &tmp[0].day, &tmp[0].hour, &tmp[0].minute, &tmp[0].t) == 6)
+        {
+            if (tmp->month == month)
+            {
+                printf("%04d - %02d - %02d - %02d - %02d\tt = %3d%cC\n",
+                       tmp[0].year,
+                       tmp[0].month,
+                       tmp[0].day,
+                       tmp[0].hour,
+                       tmp[0].minute,
+                       tmp[0].t,
+                       0x27);
+            }
+        }
+        else
+        {
+            printf("Error or missing value in line %d\n", line);
+        }
+    }
+
+    fclose(fp);
+    return;
+}
+
+void out_txt_mon(char *filename, char month)
+{
+    char *output_f = "output_month.txt";
+    FILE *fp_out;
+    
+    if((fp_out = fopen(output_f, "w")) == NULL)
+    {
+        perror("Can't open file");
+        return;
+    }
+    
+    char *input_f = filename;
+    char buffer[1024];
+    FILE *fp_in;
+    
+    if((fp_in = fopen(input_f, "r")) == NULL)
+    {
+        perror("Can't find opening file");
+        return;
+    }
+    
+    sens tmp[1];
+    int32_t line = 0;
+    while (fgets(buffer, sizeof(buffer), fp_in))
+    {
+        line++;
+        if (sscanf(buffer, "%d;%d;%d;%d;%d;%d", &tmp[0].year, &tmp[0].month, &tmp[0].day, &tmp[0].hour, &tmp[0].minute, &tmp[0].t) == 6)
+        {
+           if ((tmp->month) == month)
+                fprintf(fp_out, "%04d - %02d - %02d - %02d - %02d\tt = %3d%cC\n",
+                       tmp[0].year,
+                       tmp[0].month,
+                       tmp[0].day,
+                       tmp[0].hour,
+                       tmp[0].minute,
+                       tmp[0].t,
+                       0x27);
+        }
+        // else
+        // {
+        //     fputs("In line  error  or missing value\n", fp_out);
+        // }
+    }    
+    fclose(fp_in);
+    fclose(fp_out);
+
     return;
 }
